@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import Quote from "../components/Quote.astro";
+
+const quotes = [
+  "La vida es corta, sonríe mientras tengas dientes",
+  "No soy raro, soy una edición limitada",
+  "Mi cama me ama y yo la amo a ella",
+  "Si la vida te da limones, pide sal y tequila",
+];
+
+const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+---
+
+<Layout title="Frases Explícitas">
+  <main class="min-h-screen flex flex-col items-center justify-center p-4">
+    <ThemeToggle />
+
+    <!-- <img src="/favicon.svg" alt="Frases Explícitas" class="w-24 h-24 mb-8" /> -->
+
+    <h1
+      class="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center font-poppins"
+    >
+      Frases Explícitas
+    </h1>
+
+    <Quote text={randomQuote} />
+
+    <button
+      id="new-quote"
+      class="mt-8 px-6 py-3 bg-primary hover:bg-opacity-90 text-white rounded-lg transform transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 font-poppins"
+    >
+      Nueva Frase
+    </button>
+  </main>
+</Layout>
+
+<script>
+  const quotes = [
+    "La vida es corta, sonríe mientras tengas dientes",
+    "No soy raro, soy una edición limitada",
+    "Mi cama me ama y yo la amo a ella",
+    "Si la vida te da limones, pide sal y tequila",
+    "Soy tan único que ni Google me encuentra",
+    "No soy vago, estoy en modo ahorro de energía",
+    "La perfección no existe, pero yo soy una excepción",
+  ];
+
+  const quoteElement = document.querySelector("blockquote");
+  const newQuoteButton = document.getElementById("new-quote");
+
+  newQuoteButton?.addEventListener("click", () => {
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    if (quoteElement) {
+      quoteElement.textContent = `"${randomQuote}"`;
+    }
+  });
+</script>
